@@ -14,6 +14,7 @@
 		84A0AC682A1374ED001100CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A0AC662A1374ED001100CB /* LaunchScreen.storyboard */; };
 		84A0AC712A14AB4D001100CB /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0AC702A14AB4D001100CB /* PlaceAnnotation.swift */; };
 		84A0AC742A14ACEB001100CB /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0AC732A14ACEB001100CB /* CLLocation+Extensions.swift */; };
+		84A0AC772A14B363001100CB /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0AC762A14B363001100CB /* PlacesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		84A0AC692A1374ED001100CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84A0AC702A14AB4D001100CB /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		84A0AC732A14ACEB001100CB /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
+		84A0AC762A14B363001100CB /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		84A0AC5A2A1374EB001100CB /* NearMee */ = {
 			isa = PBXGroup;
 			children = (
+				84A0AC752A14B348001100CB /* Controllers */,
 				84A0AC722A14ACCE001100CB /* Extensions */,
 				84A0AC6F2A14AB2A001100CB /* Annotations */,
 				84A0AC5B2A1374EB001100CB /* AppDelegate.swift */,
@@ -84,6 +87,14 @@
 				84A0AC732A14ACEB001100CB /* CLLocation+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84A0AC752A14B348001100CB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84A0AC762A14B363001100CB /* PlacesTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +172,7 @@
 				84A0AC602A1374EB001100CB /* ViewController.swift in Sources */,
 				84A0AC5C2A1374EB001100CB /* AppDelegate.swift in Sources */,
 				84A0AC5E2A1374EB001100CB /* SceneDelegate.swift in Sources */,
+				84A0AC772A14B363001100CB /* PlacesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
