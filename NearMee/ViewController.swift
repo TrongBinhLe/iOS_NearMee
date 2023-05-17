@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var locationManager: CLLocationManager?
+    
     lazy var mapView: MKMapView = {
        let map = MKMapView()
         map.showsUserLocation = true
@@ -33,7 +35,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.green
+        
+        //initialize location manager
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.requestLocation()
+        
         setupUI()
     }
     
@@ -59,6 +69,38 @@ class ViewController: UIViewController {
             mapView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
+    
+    private func checkLocationAuthorization() {
+        guard let locationManager = locationManager,
+              let location = locationManager.location else { return }
+        
+        switch locationManager.authorizationStatus {
+        case .authorizedAlways, .authorizedWhenInUse:
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 760, longitudinalMeters: 760)
+            mapView.setRegion(region, animated: true)
+        case .denied:
+            print("Location services has been denied")
+        case .notDetermined, .restricted:
+            print("Location cannot be determind or retricted")
+        @unknown default:
+            print("Unknown error. Unable to get location.")
+        }
+    }
 
+}
+
+extension ViewController: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
 }
 
