@@ -12,7 +12,7 @@ import MapKit
 class PlacesTableViewController: UITableViewController {
      
     var userLocation: CLLocation
-    let places: [PlaceAnnotation]
+    var places: [PlaceAnnotation]
     
     init(userLocation: CLLocation, places: [PlaceAnnotation]) {
         self.userLocation = userLocation
@@ -22,10 +22,15 @@ class PlacesTableViewController: UITableViewController {
         //register cell
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "PlaceCell")
+        self.places.swapAt(indexForSelectedRow ?? 0, 0)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private var indexForSelectedRow: Int? {
+        self.places.firstIndex(where: {$0.isSelected == true })
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +56,7 @@ class PlacesTableViewController: UITableViewController {
         content.secondaryText = formatDistanceForDisplay(calculateDistance(from: userLocation, to: place.location))
         
         cell.contentConfiguration = content
+        cell.backgroundColor = place.isSelected ? UIColor.lightGray : UIColor.clear
         return cell
         
     }

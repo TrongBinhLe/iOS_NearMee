@@ -11,9 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     var locationManager: CLLocationManager?
+    private var places: [PlaceAnnotation] = []
     
     lazy var mapView: MKMapView = {
        let map = MKMapView()
+        map.delegate = self
         map.showsUserLocation = true
         map.translatesAutoresizingMaskIntoConstraints = false
         return map
@@ -117,15 +119,17 @@ class ViewController: UIViewController {
         search.start {[weak self] response, error in
             guard let response = response, error == nil else { return }
             
-            let places = response.mapItems.map { mapItem in
+            self?.places = response.mapItems.map { mapItem in
                 PlaceAnnotation.init(mapItem: mapItem)
             }
             
-            places.forEach { place in
+            self?.places.forEach { place in
                 self?.mapView.addAnnotation(place)
             }
             
-            self?.presentPlacesSheet(places: places)
+            if let places = self?.places {
+                self?.presentPlacesSheet(places: places)
+            }
             print(response.mapItems)
         }
         
@@ -161,3 +165,26 @@ extension ViewController: CLLocationManagerDelegate {
     }
 }
 
+// MARK: MKMapView Delegate
+
+extension ViewController: MKMapViewDelegate {
+    
+    private func clearAllSelections() {
+        self.places = self.places.map({ place in
+            place.isSelected = false
+            return place
+        })
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+        
+        // clear all selections
+        clearAllSelections()
+        
+        guard let selectionAnnotation = annotation as? PlaceAnnotation else { return }
+        let placeAnnotation = self.places.first(where: { $0.id == selectionAnnotation.id })
+        placeAnnotation?.isSelected = true
+        
+        presentPlacesSheet(places: self.places)
+    }
+}
