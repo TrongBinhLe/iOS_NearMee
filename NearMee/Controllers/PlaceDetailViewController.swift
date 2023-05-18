@@ -38,6 +38,7 @@ class PlaceDetailViewController: UIViewController {
         let button = UIButton(configuration: config)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Direction", for: .normal)
+        
         return button
     }()
     
@@ -65,6 +66,22 @@ class PlaceDetailViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    @objc private func directionButtonTapped() {
+        let coordinate = place.location.coordinate
+        guard let url = URL(string: "https://maps.apple.com/?daddr=\(coordinate.latitude),\(coordinate.longitude)")
+        else { return }
+        
+        UIApplication.shared.open(url)
+    }
+    
+    @objc private func callButtonTapped(_ sender: UIButton) {
+        
+        //place.phone = +(512)-345-2345
+        //what we need = 5123452345
+        guard let url =  URL(string: "tel://\(place.phone.formatPhoneCall)") else { return }
+        UIApplication.shared.open(url)
+    }
+    
     private func setupUI() {
         style()
         layout()
@@ -88,6 +105,8 @@ class PlaceDetailViewController: UIViewController {
         contactStackView.axis = .horizontal
         contactStackView.spacing = UIStackView.spacingUseSystem
         
+        directionButton.addTarget(self, action: #selector(directionButtonTapped), for: .touchUpInside)
+        callButton.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
         
     }
     
