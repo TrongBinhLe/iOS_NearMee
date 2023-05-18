@@ -15,6 +15,7 @@
 		84A0AC712A14AB4D001100CB /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0AC702A14AB4D001100CB /* PlaceAnnotation.swift */; };
 		84A0AC742A14ACEB001100CB /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0AC732A14ACEB001100CB /* CLLocation+Extensions.swift */; };
 		84A0AC772A14B363001100CB /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0AC762A14B363001100CB /* PlacesTableViewController.swift */; };
+		84A0AC792A14E03A001100CB /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0AC782A14E03A001100CB /* PlaceDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		84A0AC702A14AB4D001100CB /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		84A0AC732A14ACEB001100CB /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		84A0AC762A14B363001100CB /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		84A0AC782A14E03A001100CB /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				84A0AC762A14B363001100CB /* PlacesTableViewController.swift */,
+				84A0AC782A14E03A001100CB /* PlaceDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			files = (
 				84A0AC712A14AB4D001100CB /* PlaceAnnotation.swift in Sources */,
 				84A0AC742A14ACEB001100CB /* CLLocation+Extensions.swift in Sources */,
+				84A0AC792A14E03A001100CB /* PlaceDetailViewController.swift in Sources */,
 				84A0AC602A1374EB001100CB /* ViewController.swift in Sources */,
 				84A0AC5C2A1374EB001100CB /* AppDelegate.swift in Sources */,
 				84A0AC5E2A1374EB001100CB /* SceneDelegate.swift in Sources */,
